@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const HomeSlice = createSlice({
   name: "home",
   initialState: {
+    orders: [],
     items: [
       {
         id: 1,
@@ -54,6 +55,18 @@ const HomeSlice = createSlice({
       },
     ],
   },
+  reducers: {
+    addToOrder(state, action) {
+      let isInArray = false;
+      state.orders.forEach((el) => {
+        if (el.id === action.payload.props.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) state.orders.push(action.payload.props);
+    },
+  },
 });
 
+export const { addToOrder } = HomeSlice.actions;
 export default HomeSlice.reducer;
