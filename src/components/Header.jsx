@@ -19,9 +19,10 @@ const Header = () => {
           onClick={() => setCartOpen((cartOpen = !cartOpen))}
           className={`shop-cart-button ${cartOpen && "active"}`}
         />
+        {cartOpen && <div className="shop-cart"></div>}
       </div>
 
-      <div className="presentation">Hello world</div>
+      <div className="presentation"></div>
     </header>
   );
 };
