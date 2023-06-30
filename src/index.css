@@ -18,6 +18,10 @@ body {
   margin: 50px auto;
 }
 
+header {
+  position: relative; /* чтобы позиционироваться для header .cart-shop. */
+}
+
 header .logo {
   font-weight: 600;
   font-size: 20px;
@@ -48,6 +52,17 @@ header .shop-cart-button {
 header .shop-cart-button:hover,
 .active {
   color: #dc3d3d;
+}
+
+header .shop-cart {
+  position: absolute; /*родительский элемент header*/
+  top: 30px; /*от header сдвиг вниз*/
+  right: 0; /*от header сдвиг влево */
+  width: 450px; /*ширина*/
+  min-height: 100px; /*минимальная высота, потом ее уберу и высота будет определяться содержимым корзины*/
+  background-color: #fafafa; /*цвет фона*/
+  box-shadow: 4px 5px 15px -7px #606060; /*тень*/
+  z-index: 1000; /*поместить поверх остальных слоев*/
 }
 
 header .presentation {
