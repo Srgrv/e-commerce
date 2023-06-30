@@ -1,0 +1,29 @@
+import React, { useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+
+const Header = () => {
+  let [cartOpen, setCartOpen] = useState(false);
+
+  return (
+    <header>
+      <div>
+        <span className="logo">House Staff</span>
+
+        <ul className="nav">
+          <li>Про нас</li>
+          <li>Контакты</li>
+          <li>Кабинет</li>
+        </ul>
+
+        <FaShoppingCart
+          onClick={() => setCartOpen((cartOpen = !cartOpen))}
+          className={`shop-cart-button ${cartOpen && "active"}`}
+        />
+      </div>
+
+      <div className="presentation">Hello world</div>
+    </header>
+  );
+};
+
+export default Header;
