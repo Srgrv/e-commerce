@@ -46,12 +46,13 @@ header ul.nav li:hover {
 header .shop-cart-button {
   float: right;
   cursor: pointer;
-  transition: color 500ms ease;
+  transition: color, transform 500ms ease; /*задержка для color и transform в 500мс при наведении:hover  и установки класса .active с эффектом ease*/
 }
 
 header .shop-cart-button:hover,
-.active {
+header .shop-cart-button.active {
   color: #dc3d3d;
+  transform: scale(1.5);
 }
 
 header .shop-cart {
