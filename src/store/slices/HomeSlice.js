@@ -65,8 +65,13 @@ const HomeSlice = createSlice({
       });
       if (!isInArray) state.orders.push(action.payload.props);
     },
+    deleteFromOrder(state, action) {
+      state.orders = state.orders.filter(
+        (item) => item.id !== action.payload.props.id
+      );
+    },
   },
 });
 
-export const { addToOrder } = HomeSlice.actions;
+export const { addToOrder, deleteFromOrder } = HomeSlice.actions;
 export default HomeSlice.reducer;
