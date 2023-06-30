@@ -10,6 +10,8 @@ const Header = () => {
 
   const orders = useSelector((state) => state.home.orders);
 
+  const summa = orders.reduce((a, b) => a + Number(b.price), 0).toFixed(2);
+
   return (
     <header>
       <div>
@@ -28,7 +30,12 @@ const Header = () => {
         {cartOpen && (
           <div className="shop-cart">
             {orders.length > 0 ? (
-              orders.map((item) => <Order key={item.id} {...item} />)
+              <div>
+                {orders.map((item) => (
+                  <Order key={item.id} {...item} />
+                ))}
+                <p className="summa">Сумма: {summa}$</p>
+              </div>
             ) : (
               <div className="empty">
                 <h2>Товаров нет</h2>
