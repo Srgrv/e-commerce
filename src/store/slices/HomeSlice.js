@@ -55,16 +55,18 @@ const HomeSlice = createSlice({
       },
     ],
     currentItems: [],
+    showFullItem: false,
+    fullItem: {},
   },
   reducers: {
     addToOrder(state, action) {
       let isInArray = false;
       state.orders.forEach((el) => {
-        if (el.id === action.payload.props.id) {
+        if (el.id === action.payload.id) {
           isInArray = true;
         }
       });
-      if (!isInArray) state.orders.push(action.payload.props);
+      if (!isInArray) state.orders.push(action.payload);
     },
     deleteFromOrder(state, action) {
       state.orders = state.orders.filter(
@@ -85,10 +87,14 @@ const HomeSlice = createSlice({
 
       state.currentItems = data;
     },
+    onShowItem(state, action) {
+      state.fullItem = action.payload;
+      state.showFullItem = !state.showFullItem;
+    },
   },
 });
 
-export const { addToOrder, deleteFromOrder, chooseCategories } =
+export const { addToOrder, deleteFromOrder, chooseCategories, onShowItem } =
   HomeSlice.actions;
 
 export default HomeSlice.reducer;
