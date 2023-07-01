@@ -54,6 +54,7 @@ const HomeSlice = createSlice({
         price: "49.99",
       },
     ],
+    currentItems: [],
   },
   reducers: {
     addToOrder(state, action) {
@@ -70,8 +71,24 @@ const HomeSlice = createSlice({
         (item) => item.id !== action.payload.props.id
       );
     },
+    chooseCategories(state, action) {
+      let data = state.items;
+
+      if (action.payload === "all") {
+        data = state.items;
+        return;
+      }
+
+      if (action.payload) {
+        data = state.items.filter((item) => item.categories === action.payload);
+      }
+
+      state.currentItems = data;
+    },
   },
 });
 
-export const { addToOrder, deleteFromOrder } = HomeSlice.actions;
+export const { addToOrder, deleteFromOrder, chooseCategories } =
+  HomeSlice.actions;
+
 export default HomeSlice.reducer;
