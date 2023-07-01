@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+//reducers
+import { chooseCategories } from "../store/slices/HomeSlice";
 
 //components
 import Item from "./Item";
 
 const Items = () => {
+  const dispatch = useDispatch();
   const items = useSelector((state) => state.home.items);
+  const currentItems = useSelector((state) => state.home.currentItems);
+
+  useEffect(() => {
+    dispatch(chooseCategories());
+  }, [items]);
 
   return (
     <main>
-      {items.map((item) => (
+      {currentItems.map((item) => (
         <Item key={item.id} {...item} />
       ))}
     </main>
