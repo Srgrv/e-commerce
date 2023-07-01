@@ -3,20 +3,22 @@ import { useDispatch } from "react-redux";
 
 //reducers
 import { addToOrder } from "../store/slices/HomeSlice";
+import { onShowItem } from "../store/slices/HomeSlice";
 
 const Item = (props) => {
   const dispatch = useDispatch();
 
   return (
     <div className="item">
-      <img src={"./img/" + props.img} alt="" />
+      <img
+        src={"./img/" + props.img}
+        alt=""
+        onClick={() => dispatch(onShowItem(props))}
+      />
       <h2>{props.title}</h2>
       <p>{props.desc}</p>
       <b>{props.price}$</b>
-      <div
-        className="add-to-cart"
-        onClick={() => dispatch(addToOrder({ props }))}
-      >
+      <div className="add-to-cart" onClick={() => dispatch(addToOrder(props))}>
         +
       </div>
     </div>
