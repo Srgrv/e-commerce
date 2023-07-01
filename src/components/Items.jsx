@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+
 import { useDispatch } from "react-redux";
 
 //reducers
@@ -16,6 +16,7 @@ const Items = () => {
 
   useEffect(() => {
     dispatch(chooseCategories());
+    //eslint-disable-next-line
   }, [items]);
 
   return (
